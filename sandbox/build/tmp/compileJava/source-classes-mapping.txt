@@ -1,4 +1,8 @@
 Point.java
  Point
-MyFirstProgram.java
- MyFirstProgram
+lessonsJava/Lesson0/MyFirstProgram.java
+ lessonsJava.Lesson0.MyFirstProgram
+lessonsJava/Lesson0/Square.java
+ lessonsJava.Lesson0.Square
+lessonsJava/Lesson0/Restangle.java
+ lessonsJava.Lesson0.Restangle

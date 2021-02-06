@@ -8,7 +8,7 @@ public class StartPoint {
             Point p2 = new Point(0,0);
             p2.Print();
 
-        // method distance calls from class Point1
+        // method distance calls from class Point
         System.out.println("Method distance result N4: " +  " = " + p1.distance(p2));
 
         // Static function distance

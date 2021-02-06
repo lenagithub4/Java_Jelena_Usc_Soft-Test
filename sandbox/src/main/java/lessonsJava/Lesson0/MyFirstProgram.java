@@ -1,17 +1,19 @@
 package lessonsJava.Lesson0;
 
+import lessonsJava.Lesson1.Point;
+
 public class MyFirstProgram {
 	
-	
+
 	public static void main (String[] args) {
 		hello("world");
 		hello("Admin");
 
 		Square s = new Square(5.5);
-		System.out.println("ploshadj kvadrata " + s.l + " = " + area(s));
+		System.out.println("ploshadj kvadrata " + s.l + " = " + s.area());
 
 		Restangle r = new Restangle(5, 8);
-		System.out.println("restangle " + r.a + " и " + r.b + " = " + area(r));
+		System.out.println("restangle " + r.a + " и " + r.b + " = " + r.area());
 
 	}
 		public static void hello(String slovo1) {
@@ -29,16 +31,5 @@ public class MyFirstProgram {
 			System.out.println(2 + 2 * 2);
 			System.out.println("2 + 2 =" + (2 + 2));
 		}
-
-		public static double area(Square s) {
-			return (s.l * s.l);
-		}
-
-
-	 	public static double area(Restangle r) {
-		return (r.a * r.b);
-		}
-
-	
 	
 }

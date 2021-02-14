@@ -41,7 +41,7 @@ public class AddressBook {
 
         gotoGroupPage();
         initGroup();
-        fiilGroupForm(new GroupForm("test1", "test2", "test3"));
+        fillGroupForm(new GroupForm("test1", "test2", "test3"));
         submitGroupCreation();
         gotoGroupPage();
         select();
@@ -60,9 +60,10 @@ public class AddressBook {
         wd.findElement(By.name("submit")).click();
     }
 
-    private void fiilGroupForm(GroupForm groupForm) {
+    private void fillGroupForm(GroupForm groupForm) {
         wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
+        wd.findElement(
+                By.name("group_name")).clear();
         wd.findElement(By.name("group_name")).sendKeys(groupForm.getName());
         wd.findElement(By.name("group_header")).click();
         wd.findElement(By.name("group_header")).clear();

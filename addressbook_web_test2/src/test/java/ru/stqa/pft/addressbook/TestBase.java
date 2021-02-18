@@ -7,14 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-
-public class AddressBook {
+public class TestBase {
     private WebDriver wd;
-
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
@@ -36,31 +33,19 @@ public class AddressBook {
         wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    @Test
-    public void testLoginAddressBook() throws Exception {
-
-        gotoGroupPage();
-        initGroup();
-        fillGroupForm(new GroupForm("test1", "test2", "test3"));
-        submitGroupCreation();
-        gotoGroupPage();
-        select();
-        returnGroupPage();
-    }
-
-    private void returnGroupPage() {
+    protected void returnGroupPage() {
         wd.findElement(By.linkText("Logout")).click();
     }
 
-    private void select() {
+    protected void select() {
         wd.findElement(By.name("selected[]")).click();
     }
 
-    private void submitGroupCreation() {
+    protected void submitGroupCreation() {
         wd.findElement(By.name("submit")).click();
     }
 
-    private void fillGroupForm(GroupForm groupForm) {
+    protected void fillGroupForm(GroupForm groupForm) {
         wd.findElement(By.name("group_name")).click();
         wd.findElement(
                 By.name("group_name")).clear();
@@ -73,11 +58,11 @@ public class AddressBook {
         wd.findElement(By.name("group_footer")).sendKeys(groupForm.getFooter());
     }
 
-    private void initGroup() {
+    protected void initGroup() {
         wd.findElement(By.name("new")).click();
     }
 
-    private void gotoGroupPage() {
+    protected void gotoGroupPage() {
         wd.findElement(By.linkText("groups")).click();
     }
 
@@ -105,7 +90,11 @@ public class AddressBook {
         }
     }
 
+    protected void DeleteGroup() {
+      wd.findElement(By.name("delete")).click();
+    }
 
+    protected void SelectGroup() {
+      wd.findElement(By.name("selected[]")).click();
+    }
 }
-
-

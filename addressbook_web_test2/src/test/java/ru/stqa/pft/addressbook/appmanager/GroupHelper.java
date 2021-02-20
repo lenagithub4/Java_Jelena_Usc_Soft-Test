@@ -2,53 +2,45 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.stqa.pft.addressbook.model.GroupForm;
 
-public class GroupHelper {
-    private WebDriver wd;
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(WebDriver wd) {
-        this.wd=wd;
+        super(wd);
     }
 
     public void returnGroupPage() {
-        wd.findElement(By.linkText("Logout")).click();
+        click(By.linkText("Logout"));
     }
 
     public void select() {
-        wd.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
 
     public void submitGroupCreation() {
-        wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void fillGroupForm(GroupForm groupForm) {
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(groupForm.getName());
-        wd.findElement(By.name("group_header")).click();
-        wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(groupForm.getHeader());
-        wd.findElement(By.name("group_footer")).click();
-        wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(groupForm.getFooter());
+        type(By.name("group_name"), groupForm.getName());
+        type(By.name("group_header"), groupForm.getHeader());
+        type(By.name("group_footer"), groupForm.getFooter());
     }
 
     public void initGroup() {
-        wd.findElement(By.name("new")).click();
+        click(By.name("new"));
     }
 
     public void gotoGroupPage() {
-        wd.findElement(By.linkText("groups")).click();
+        click(By.linkText("groups"));
     }
 
     public void DeleteGroup() {
-      wd.findElement(By.name("delete")).click();
+        click(By.name("delete"));
     }
 
     public void SelectGroup() {
-      wd.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
 }

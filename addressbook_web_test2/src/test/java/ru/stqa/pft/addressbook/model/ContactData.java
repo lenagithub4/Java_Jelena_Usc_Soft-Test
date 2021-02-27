@@ -1,5 +1,9 @@
 package ru.stqa.pft.addressbook.model;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import ru.stqa.pft.addressbook.appmanager.HelperBase;
+
 public class ContactData {
     private final String name;
     private final String middlename;
@@ -93,5 +97,17 @@ public class ContactData {
 
     public String getNotes() {
         return notes;
+    }
+
+    public static class NavigationHelper extends HelperBase {
+        private WebDriver wd;
+
+        public NavigationHelper(WebDriver wd) {
+            super(wd);
+        }
+
+        public void GoToHome() {
+          click(By.linkText("home"));
+        }
     }
 }

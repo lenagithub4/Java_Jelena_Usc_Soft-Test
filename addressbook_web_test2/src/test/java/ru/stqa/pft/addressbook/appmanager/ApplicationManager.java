@@ -1,10 +1,8 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +10,7 @@ public class ApplicationManager {
     private WebDriver wd;
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
-    private NavigationHelper navigationHelper;
+    private ContactData.NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
 
     public void init() {
@@ -22,7 +20,7 @@ public class ApplicationManager {
 
        wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
-        navigationHelper = new NavigationHelper(wd);
+        navigationHelper = new ContactData.NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
         //login
@@ -45,7 +43,7 @@ public class ApplicationManager {
         return groupHelper;
     }
 
-    public NavigationHelper getNavigationHelper() {
+    public ContactData.NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
 

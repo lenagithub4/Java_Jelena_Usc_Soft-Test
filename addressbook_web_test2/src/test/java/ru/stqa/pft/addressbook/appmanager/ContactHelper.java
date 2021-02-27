@@ -17,7 +17,7 @@ public class ContactHelper  extends HelperBase {
       click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
-    public void FillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData) {
 
       type(By.name("firstname"), contactData.getName());
       type(By.name("middlename"), contactData.getMiddlename());
@@ -35,12 +35,24 @@ public class ContactHelper  extends HelperBase {
       click(By.name("bmonth"));
       type(By.name("byear"), contactData.getByear());
       type(By.name("address2"), contactData.getCity2());
-      click(By.name("new_group"));
-      select(By.name("new_group"), contactData.getTest1());
-      click(By.name("new_group"));
+      //click(By.name("new_group"));
+      //select(By.name("new_group"), contactData.getTest1());
+     // click(By.name("new_group"));
       type(By.name("phone2"), contactData.getPhone2());
       type(By.name("notes"), contactData.getNotes());
     }
 
 
+    public void selectContact() {
+        click(By.id("1"));
+    }
+
+    public void selectContactEdit() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void updateContact() {
+       // click(By.xpath("//input[@name='update'])[2]"));
+        click(By.xpath("//div[@id='content']/form/input[22]"));
+    }
 }

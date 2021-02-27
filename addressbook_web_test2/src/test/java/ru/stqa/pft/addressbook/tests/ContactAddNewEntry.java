@@ -11,7 +11,7 @@ public class ContactAddNewEntry extends TestBase {
 
 
     app.getContactHelper().AddNewContact();
-    app.getContactHelper().FillContactForm(new ContactData("Olga", "Vladimirovna", "Uscelemova", "Olga", "BBB", "Riga", "22233355", "lena-usc@inbox.lv", "28", "April", "1978", "Riga", "test1", "Riga", "catalog entry2"));
+    app.getContactHelper().fillContactForm(new ContactData("Olga", "Vladimirovna", "Uscelemova", "Olga", "BBB", "Riga", "22233355", "lena-usc@inbox.lv", "28", "April", "1978", "Riga", "test1", "Riga", "catalog entry2"));
     app.getContactHelper().submitForm();
     app.getNavigationHelper().GoToHome();
     app.logout();

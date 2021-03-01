@@ -45,7 +45,7 @@ public class ContactHelper  extends HelperBase {
 
     public void selectContact() {
         int i=0;
-           for (i=0; i == 2; i++)
+           for (i=0; i == 1; i++)
             click(By.id( "i+1"));
 
     }

@@ -8,45 +8,46 @@ public class ContactHelper  extends HelperBase {
 
 
     public ContactHelper(WebDriver wd) {
-      super(wd);
+        super(wd);
     }
+
     public void AddNewContact() {
-       click(By.linkText("add new"));
+        click(By.linkText("add new"));
     }
+
     public void submitForm() {
-      click(By.xpath("(//input[@name='submit'])[2]"));
+        click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
     public void fillContactForm(ContactData contactData) {
 
-      type(By.name("firstname"), contactData.getName());
-      type(By.name("middlename"), contactData.getMiddlename());
-      type(By.name("lastname"), contactData.getSurname());
-      type(By.name("nickname"), contactData.getNick());
-      type(By.name("company"), contactData.getCompany());
-      type(By.name("address"), contactData.getCity());
-      type(By.name("home"), contactData.getPhone());
-      type(By.name("email"), contactData.getEmail());
-      click(By.name("bday"));
-      select(By.name("bday"), contactData.getBday());
-      click(By.name("bday"));
-      click(By.name("bmonth"));
-      select(By.name("bmonth"), contactData.getBmonth());
-      click(By.name("bmonth"));
-      type(By.name("byear"), contactData.getByear());
-      type(By.name("address2"), contactData.getCity2());
-      //click(By.name("new_group"));
-      //select(By.name("new_group"), contactData.getTest1());
-     // click(By.name("new_group"));
-      type(By.name("phone2"), contactData.getPhone2());
-      type(By.name("notes"), contactData.getNotes());
+        type(By.name("firstname"), contactData.getName());
+        type(By.name("middlename"), contactData.getMiddlename());
+        type(By.name("lastname"), contactData.getSurname());
+        type(By.name("nickname"), contactData.getNick());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getCity());
+        type(By.name("home"), contactData.getPhone());
+        type(By.name("email"), contactData.getEmail());
+        click(By.name("bday"));
+        select(By.name("bday"), contactData.getBday());
+        click(By.name("bday"));
+        click(By.name("bmonth"));
+        select(By.name("bmonth"), contactData.getBmonth());
+        click(By.name("bmonth"));
+        type(By.name("byear"), contactData.getByear());
+        type(By.name("address2"), contactData.getCity2());
+        //click(By.name("new_group"));
+        //select(By.name("new_group"), contactData.getTest1());
+        // click(By.name("new_group"));
+        type(By.name("phone2"), contactData.getPhone2());
+        type(By.name("notes"), contactData.getNotes());
     }
 
 
     public void selectContact() {
-        int i=0;
-           for (i=0; i == 1; i++)
-            click(By.id( "i+1"));
+
+            click(By.name("selected[]"));
 
     }
 
@@ -55,7 +56,11 @@ public class ContactHelper  extends HelperBase {
     }
 
     public void updateContact() {
-       // click(By.xpath("//input[@name='update'])[2]"));
+        // click(By.xpath("//input[@name='update'])[2]"));
         click(By.xpath("//div[@id='content']/form/input[22]"));
+    }
+
+    public void deleteContact() {
+        click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     }
 }

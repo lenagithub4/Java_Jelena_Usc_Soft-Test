@@ -105,15 +105,4 @@ public class ContactData {
         return group;
     }
 
-    public static class NavigationHelper extends HelperBase {
-        private WebDriver wd;
-
-        public NavigationHelper(WebDriver wd) {
-            super(wd);
-        }
-
-        public void GoToHome() {
-          click(By.linkText("home"));
-        }
-    }
 }

@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +12,7 @@ public class ApplicationManager {
     WebDriver wd;
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
-    private ContactData.NavigationHelper navigationHelper;
+    private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private String browser;
 
@@ -34,7 +33,7 @@ public class ApplicationManager {
 
        wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
-        navigationHelper = new ContactData.NavigationHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
         //login
@@ -57,7 +56,7 @@ public class ApplicationManager {
         return groupHelper;
     }
 
-    public ContactData.NavigationHelper getNavigationHelper() {
+    public NavigationHelper getNavigationHelper() {
         return navigationHelper;
     }
 

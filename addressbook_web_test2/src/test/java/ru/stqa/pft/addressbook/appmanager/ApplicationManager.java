@@ -30,7 +30,7 @@ public class ApplicationManager {
         } else if (browser.equals(BrowserType.EDGE)) {
             wd = new EdgeDriver();
         }
-        WebDriver.Timeouts implicitlyWait = wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        WebDriver.Timeouts implicitlyWait = wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
        wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);

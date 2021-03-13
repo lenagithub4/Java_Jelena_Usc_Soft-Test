@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.tests;
 
 
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.GroupForm;
 
 
 public class GroupDeleteTest extends TestBase {
@@ -10,7 +11,10 @@ public class GroupDeleteTest extends TestBase {
   @Test
   public void testGroupDelete() {
     app.getNavigationHelper().gotoGroupPage();
-    app.getGroupHelper().SelectGroup();
+    if (! app.getGroupHelper().isThereAGroup()) {
+      app.getGroupHelper().createGroup(new GroupForm("test1", null, null));
+    }
+   app.getGroupHelper().selectGroup();
     app.getGroupHelper().DeleteGroup();
     app.getGroupHelper().returnGroupPage();
 

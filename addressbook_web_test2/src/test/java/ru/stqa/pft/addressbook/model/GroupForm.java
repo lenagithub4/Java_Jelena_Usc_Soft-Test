@@ -11,6 +11,7 @@ public class GroupForm {
         this.footer = footer;
     }
 
+
     public String getName() {
         return name;
     }

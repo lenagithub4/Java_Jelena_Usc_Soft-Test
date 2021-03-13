@@ -36,7 +36,7 @@ public class GroupHelper extends HelperBase{
         click(By.name("delete"));
     }
 
-    public void SelectGroup() {
+    public void selectGroup() {
         click(By.name("selected[]"));
     }
 
@@ -46,6 +46,15 @@ public class GroupHelper extends HelperBase{
     public void submitGroupModification() {  click(By.name("update"));  }
 
 
+    public void createGroup(GroupForm group){
+       initGroup();
+       fillGroupForm(group);
+       submitGroupCreation();
+      //select();
+       returnGroupPage();
+    }
 
-
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }

@@ -11,13 +11,15 @@ public class GroupDeleteTest extends TestBase {
   @Test
   public void testGroupDelete() {
     app.getNavigationHelper().gotoGroupPage();
-    if (! app.getGroupHelper().isThereAGroup()) {
+    if (!app.getGroupHelper().isThereAGroup()) {
       app.getGroupHelper().createGroup(new GroupForm("test1", null, null));
+
     }
-   app.getGroupHelper().selectGroup();
+    app.getNavigationHelper().gotoGroupPage();
+    app.getGroupHelper().selectGroup();
     app.getGroupHelper().DeleteGroup();
     app.getGroupHelper().returnGroupPage();
 
-  }
+}
 
 }

@@ -51,14 +51,15 @@ public class GroupHelper extends HelperBase{
         initGroup();
        fillGroupForm(group);
        submitGroupCreation();
+        gotoGroupPage();
        //select();
        //returnGroupPage();
 
     }
 
     private void gotoGroupPage() {
-        if (isElementPresent(By.tagName("h1")) && isElementPresent(By.name("new"))) {
-            /* wd.findElement(By.tagName("h1")).getText().equals("Groups") && - error*/
+        if (isElementPresent(By.tagName("h1")) && wd.findElement(By.tagName("h1")).getText().equals("Groups") && isElementPresent(By.name("new"))) {
+
             return;
         }
         click(By.linkText("groups"));

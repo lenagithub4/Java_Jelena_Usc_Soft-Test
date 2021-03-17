@@ -1,7 +1,7 @@
 package LessonsJava.Lesson3;
 
 import lessonsJava.lesson3.Equation;
-import org.junit.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class EquationTests {

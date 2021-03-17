@@ -1,10 +1,16 @@
+lessonsJava/Lesson0/Restangle.java
+ lessonsJava.Lesson0.Restangle
 lessonsJava/Lesson0/MyFirstProgram.java
  lessonsJava.Lesson0.MyFirstProgram
 lessonsJava/Lesson1/Point.java
  lessonsJava.Lesson1.Point
+lessonsJava/lesson3/Equation.java
+ lessonsJava.lesson3.Equation
 lessonsJava/Lesson1/StartPoint.java
  lessonsJava.Lesson1.StartPoint
 lessonsJava/Lesson0/Square.java
  lessonsJava.Lesson0.Square
-lessonsJava/Lesson0/Restangle.java
- lessonsJava.Lesson0.Restangle
+lessonsJava/lesson3/Equality.java
+ lessonsJava.lesson3.Equality
+lessonsJava/Lesson4/Primes.java
+ lessonsJava.Lesson4.Primes

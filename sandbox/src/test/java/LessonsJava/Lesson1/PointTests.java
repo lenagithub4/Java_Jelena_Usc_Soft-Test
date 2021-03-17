@@ -1,8 +1,8 @@
 package LessonsJava.Lesson1;
 
 import lessonsJava.Lesson1.Point;
-import org.junit.Test;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class PointTests {
     @Test

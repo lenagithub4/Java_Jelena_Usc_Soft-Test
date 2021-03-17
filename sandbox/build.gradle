@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "lessonsJava.Lesson0.MyFirstProgram"
+//mainClassName = "lessonsJava.Lesson0.MyFirstProgram"
 
 
 repositories {
@@ -9,7 +9,7 @@ repositories {
 
 
 dependencies {
-    implementation 'org.testng:testng:7.3.0'
+    implementation 'org.testng:testng:7.0.0'
 
 }
 

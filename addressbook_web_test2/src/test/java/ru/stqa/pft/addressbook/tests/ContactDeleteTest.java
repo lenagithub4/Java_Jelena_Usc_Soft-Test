@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupForm;
@@ -8,6 +9,7 @@ public class ContactDeleteTest extends TestBase {
     @Test
     public void testContactDelete() {
         app.getNavigationHelper().GoToHome();
+        int before = app.getContactHelper().getContactCount();
 
         if (! app.getContactHelper().isThereAContact()) {
             if (!app.getGroupHelper().isThereAGroup()) {
@@ -19,5 +21,7 @@ public class ContactDeleteTest extends TestBase {
         app.getContactHelper().selectContact();
         app.getContactHelper().selectContactEdit();
         app.getContactHelper().deleteContact();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before - 1);
     }
 }

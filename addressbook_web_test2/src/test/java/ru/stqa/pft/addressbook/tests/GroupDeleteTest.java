@@ -36,7 +36,7 @@ public class GroupDeleteTest extends TestBase {
      for (int i=0; i<after.size(); i++) { // no necessary Variant 1
        Assert.assertEquals(before.get(i), after.get(i));// no necessary Variant 1
      }// no necessary Variant 1
-  //  Assert.assertEquals(before, after); // Variant 2
+   //Assert.assertEquals(before, after); // Variant 2
 }
 
 }

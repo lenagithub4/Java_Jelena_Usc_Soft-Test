@@ -8,6 +8,8 @@ public class GroupForm {
     private final String header;
     private final String footer;
 
+
+
     public GroupForm(int id, String name, String header, String footer) {
         this.id = id;
         this.name = name;
@@ -17,7 +19,7 @@ public class GroupForm {
 
 
     public GroupForm(String name, String header, String footer) {
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.header = header;
         this.footer = footer;
@@ -49,17 +51,18 @@ public class GroupForm {
     public void setId(int id) {
         this.id = id;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupForm groupForm = (GroupForm) o;
-        return id == groupForm.id && Objects.equals(name, groupForm.name);
+        return Objects.equals(name, groupForm.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(name);
     }
 
 }

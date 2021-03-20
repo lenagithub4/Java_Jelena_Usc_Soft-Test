@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupForm;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -38,8 +39,14 @@ public class GroupCreateTest extends TestBase {
 
         //int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
         group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId()); // Lekcija 4.8
+
         before.add(group);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); // Variant 2 lists comparition
+        Comparator<? super GroupForm> byId = (q1, q2) -> Integer.compare(q1.getId(), q2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object> (after)); // Variant 2 lists comparition
+        Assert.assertEquals(before, after);
+
 
         //app.getGroupHelper().initGroup();
         //app.getGroupHelper().fillGroupForm(new GroupForm("test1", null, null));

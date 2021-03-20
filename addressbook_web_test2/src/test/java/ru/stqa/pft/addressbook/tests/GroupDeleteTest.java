@@ -27,10 +27,16 @@ public class GroupDeleteTest extends TestBase {
     app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().DeleteGroup();
     app.getNavigationHelper().gotoGroupPage();
-    List<GroupForm> after = app.getGroupHelper().getGroupList();
+    List<GroupForm> after = app.getGroupHelper().getGroupList();  // count of groups after deleting
     //int after = app.getGroupHelper().getGroupCount(); //check count of groups after deletion
-    Assert.assertEquals( after.size(), before.size() - 1);
+    Assert.assertEquals( after.size(), before.size() - 1); // is count before and after is equals?
 
+   // collections (Lists) comparition. Lection 4.6
+    before.remove(before.size() - 1); // back before list to preview state (for Variant 1, Variant 2)
+     for (int i=0; i<after.size(); i++) { // no necessary Variant 1
+       Assert.assertEquals(before.get(i), after.get(i));// no necessary Variant 1
+     }// no necessary Variant 1
+  //  Assert.assertEquals(before, after); // Variant 2
 }
 
 }

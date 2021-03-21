@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    //private final String id;
+    private final String id;
     private final String name;
     private final String middlename;
     private final String surname;
@@ -22,8 +22,8 @@ public class ContactData {
     private String group;
 
 
-    public ContactData( String name, String middlename, String surname, String group) {
-        //this.id = id;
+    public ContactData( String id, String name, String middlename, String surname, String group) {
+        this.id = id;
         this.name = name;
         this.middlename = middlename;
         this.surname = surname;
@@ -41,7 +41,25 @@ public class ContactData {
       //  this.notes = notes;
         this.group = group;
     }
-
+    public ContactData( String name, String middlename, String surname, String group) {
+        this.id = null;
+        this.name = name;
+        this.middlename = middlename;
+        this.surname = surname;
+        // this.nick = nick;
+        // this.company = company;
+        // this.city = city;
+        // this.phone = phone;
+        //  this.email = email;
+        //  this.bday = bday;
+        //  this.bmonth = bmonth;
+        //  this.byear = byear;
+        //  this.city2 = city2;
+        //  this.test1 = test1;
+        //  this.phone2 = phone2;
+        //  this.notes = notes;
+        this.group = group;
+    }
     public String getName() {
         return name;
     }
@@ -109,7 +127,8 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';
     }
@@ -119,15 +138,15 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname);
+        return Objects.hash(id, name, surname);
     }
 
-    //   public String getId() {
- //       return id;
- //   }
+    public String getId() {
+        return id;
+    }
 }

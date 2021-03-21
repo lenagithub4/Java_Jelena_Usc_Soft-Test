@@ -19,7 +19,7 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void GoToHome() {
-        if (isElementPresent(By.id("maintable"))) {
+        if (isElementPresent(By.id("maintable")) && isElementPresent(By.id("MassCB"))) {
             return;
         }
         click(By.linkText("home"));

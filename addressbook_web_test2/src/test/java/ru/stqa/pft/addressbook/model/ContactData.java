@@ -1,28 +1,29 @@
 package ru.stqa.pft.addressbook.model;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import ru.stqa.pft.addressbook.appmanager.HelperBase;
+import java.util.Objects;
 
 public class ContactData {
+    //private final String id;
     private final String name;
     private final String middlename;
     private final String surname;
-   // private final String nick;
-   // private final String company;
-   // private final String city;
-   // private final String phone;
-   // private final String email;
-   // private final String bday;
-   // private final String bmonth;
-   // private final String byear;
-   // private final String city2;
-   // private final String test1;
-   // private final String phone2;
-   // private final String notes;
+    // private final String nick;
+    // private final String company;
+    // private final String city;
+    // private final String phone;
+    // private final String email;
+    // private final String bday;
+    // private final String bmonth;
+    // private final String byear;
+    // private final String city2;
+    // private final String test1;
+    // private final String phone2;
+    // private final String notes;
     private String group;
 
-    public ContactData(String name, String middlename, String surname, String group) {
+
+    public ContactData( String name, String middlename, String surname, String group) {
+        //this.id = id;
         this.name = name;
         this.middlename = middlename;
         this.surname = surname;
@@ -105,4 +106,28 @@ public class ContactData {
         return group;
     }
 
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
+    }
+
+    //   public String getId() {
+ //       return id;
+ //   }
 }

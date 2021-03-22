@@ -19,8 +19,8 @@ public class ContactModificationTest extends TestBase{
         app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().selectContactEdit(before.size()-1);
         ContactData entry = new ContactData(before.get(before.size()-1).getId(),"Olga2", "Vladimirovna_modif", "Bubina_modif", null);   //I have deleted the group approve b: true/false
-       // app.getContactHelper().fillContactForm(new ContactData("Olga2", "Vladimirovna_modif", "Bubina_modif", null), false);
-        //app.getContactHelper().createContact(entry,false);
+       //app.getContactHelper().fillContactForm(new ContactData("Olga2", "Vladimirovna_modif", "Bubina_modif", null), false);
+        app.getContactHelper().fillContactForm(entry, false);
         app.getContactHelper().updateContact();
         app.getNavigationHelper().GoToHome();
         List<ContactData> after = app.getContactHelper().getContactList();

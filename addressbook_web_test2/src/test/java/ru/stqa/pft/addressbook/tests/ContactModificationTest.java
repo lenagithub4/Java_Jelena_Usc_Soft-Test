@@ -3,7 +3,10 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupForm;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -30,7 +33,10 @@ public class ContactModificationTest extends TestBase{
          // Lesson 4.7
         before.remove(before.size()-1);
        before.add(entry);
-       Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        Comparator<? super ContactData> byId = (q1, q2) -> Integer.compare(q1.getId(), q2.getId());
+        before.sort(byId);
+        after.sort(byId);
+       Assert.assertEquals(before, after);
 
     }
 }

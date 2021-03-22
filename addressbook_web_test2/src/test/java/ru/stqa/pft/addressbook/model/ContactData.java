@@ -42,7 +42,7 @@ public class ContactData {
         this.group = group;
     }
     public ContactData( String name, String middlename, String surname, String group) {
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.middlename = middlename;
         this.surname = surname;
@@ -138,12 +138,12 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
+        return Objects.equals(name, that.name) && Objects.equals(surname, that.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname);
+        return Objects.hash(name, surname);
     }
 
     public int getId() {

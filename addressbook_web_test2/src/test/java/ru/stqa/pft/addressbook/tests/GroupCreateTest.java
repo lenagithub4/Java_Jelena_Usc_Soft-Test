@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupForm;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -16,13 +15,13 @@ public class GroupCreateTest extends TestBase {
     @Test
     public void testGroupCreate() {
 
-        app.getNavigationHelper().gotoGroupPage();
-        List<GroupForm> before = app.getGroupHelper().getGroupList();
+        app.goTo().groupPage();
+        List<GroupForm> before = app.group().list();
         //int before = app.getGroupHelper().getGroupCount(); //check count of groups before addition
-        GroupForm group = new GroupForm("test2", null, null);
-        app.getGroupHelper().createGroup(group);
-        app.getNavigationHelper().gotoGroupPage();
-        List<GroupForm> after = app.getGroupHelper().getGroupList();
+        GroupForm group = new GroupForm().withName("test2");
+        app.group().create(group);
+        app.goTo().groupPage();
+        List<GroupForm> after = app.group().list();
         // int after = app.getGroupHelper().getGroupCount(); //check count of groups after addition
         Assert.assertEquals(after.size(), before.size() + 1);
 

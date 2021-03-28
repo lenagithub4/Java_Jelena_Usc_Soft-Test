@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupForm;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase{
 
@@ -44,13 +46,17 @@ public class GroupHelper extends HelperBase{
         wd.findElements(By.name("selected[]")).get(index).click();
 
     }
+    public void selectGroupById(int id) {
+        wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
+
+    }
 
     public void initGroupModification() { click(By.name("edit"));  }
 
     public void submitGroupModification() {  click(By.name("update"));  }
 
 
-    public void createGroup(GroupForm group){
+    public void create(GroupForm group){
         gotoGroupPage();
         initGroup();
        fillGroupForm(group);
@@ -60,6 +66,19 @@ public class GroupHelper extends HelperBase{
        //returnGroupPage();
 
     }
+    public void modify( GroupForm group) {
+      selectGroupById(group.getId());
+      initGroupModification();
+      fillGroupForm(group);
+      submitGroupModification();
+      gotoGroupPage();
+    }
+    //public void delete(int index) {
+
+     //   selectGroup(index);
+      //  DeleteGroup();
+
+   // }
 
     private void gotoGroupPage() {
         if (isElementPresent(By.tagName("h1")) && wd.findElement(By.tagName("h1")).getText().equals("Groups") && isElementPresent(By.name("new"))) {
@@ -79,15 +98,35 @@ public class GroupHelper extends HelperBase{
 
     }
 
-    public List<GroupForm> getGroupList() {
+    public List<GroupForm> list() {
         List<GroupForm> groups = new ArrayList<GroupForm>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupForm group = new GroupForm(id, name, null, null);
-            groups.add(group);
+            //GroupForm group = new GroupForm().withId(id).withName(name); deleted and group in the line below is changed on...
+            groups.add(new GroupForm().withId(id).withName(name));
         }
         return groups;
+    }
+
+    public Set<GroupForm> all() {
+        Set<GroupForm> groups = new HashSet<GroupForm>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            //GroupForm group = new GroupForm().withId(id).withName(name); deleted and group in the line below is changed on...
+            groups.add(new GroupForm().withId(id).withName(name));
+        }
+        return groups;
+    }
+
+    public void delete(GroupForm group) {
+
+        selectGroupById(group.getId());
+        DeleteGroup();
+
+
     }
 }

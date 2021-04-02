@@ -8,11 +8,9 @@ import ru.stqa.pft.addressbook.model.GroupForm;
 import java.util.List;
 
 public class ContactDeleteTest extends TestBase {
-    @Test(enabled=false)
-    public void testContactDelete() {
+
+    public void ensurePreconditions() {
         app.goTo().GoToHome();
-        List<ContactData> before = app.getContactHelper().getContactList();
-        //int before = app.getContactHelper().getContactCount();
 
         if (!app.getContactHelper().isThereAContact()) {
             if (!app.group().isThereAGroup()) {
@@ -20,6 +18,17 @@ public class ContactDeleteTest extends TestBase {
             }
             app.getContactHelper().createContact(new ContactData("Name", "Name2", "Surname", "test1"), true);
         }
+    }
+
+
+
+    @Test(enabled=true)
+    public void testContactDelete() {
+        app.goTo().GoToHome();
+        List<ContactData> before = app.getContactHelper().getContactList();
+        //int before = app.getContactHelper().getContactCount();
+
+
         app.goTo().GoToHome();
         app.getContactHelper().selectContact(before.size() - 1);
         app.getContactHelper().selectContactEdit(before.size() - 1);

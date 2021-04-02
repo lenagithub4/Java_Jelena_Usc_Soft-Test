@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
 public class GroupCreateTest extends TestBase {
 
 
-    @Test
+    @Test (enabled=false)
     public void testGroupCreate() {
 
         app.goTo().groupPage();

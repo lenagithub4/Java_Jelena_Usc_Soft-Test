@@ -87,12 +87,21 @@ public class ContactHelper  extends HelperBase {
      //  logout();
     }
 
+    public void modifyContract(int index, ContactData entry) {
+        //GoToHome();
+        selectContact(index);
+        selectContactEdit(index);
+        fillContactForm(entry, false);
+        updateContact();
+        GoToHome();
+    }
+
     private void GoToHome() {
-        if (isElementPresent(By.id("maintable"))) {
+        if (isElementPresent(By.id("maintable")) && isElementPresent(By.id("MassCB"))) {
             return;
         }
-        click(By.linkText("home"));
-    }
+      click(By.linkText("home"));
+   }
 
 
 
@@ -121,4 +130,6 @@ public class ContactHelper  extends HelperBase {
 
         return contactsList;
     }
+
+
 }

@@ -3,9 +3,11 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupForm;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactModificationTest extends TestBase{
 
@@ -23,7 +25,7 @@ public class ContactModificationTest extends TestBase{
     @Test(enabled=true)
     public void testContactModification() {
         //app.goTo().GoToHome();
-        Set<ContactData> before = app.contact().all();
+        Contacts before = app.contact().all();
                   //int before = app.getContactHelper().getContactCount();
         ContactData modifiedContact = before.iterator().next();
         //int index = before.size() - 1;
@@ -32,18 +34,18 @@ public class ContactModificationTest extends TestBase{
         //app.getContactHelper().fillContactForm(new ContactData("Olga2", "Vladimirovna_modif", "Bubina_modif", null), false); app.goTo().GoToHome();
         app.contact().modifyContract(entry);
 
-        Set<ContactData> after = app.contact().all();
+        Contacts after = app.contact().all();
        // int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after.size(), before.size());
 
          // Lesson 4.7
-        before.remove(modifiedContact);
-       before.add(entry);
+        //before.remove(modifiedContact);
+       //before.add(entry);
        // Comparator<? super ContactData> byId = (q1, q2) -> Integer.compare(q1.getId(), q2.getId());
        // before.sort(byId);
        // after.sort(byId);
-       Assert.assertEquals(before, after);
-
+       //Assert.assertEquals(before, after);
+        assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(entry))); /*proverjalka Hamcrest L.5.6 */
     }
 
 

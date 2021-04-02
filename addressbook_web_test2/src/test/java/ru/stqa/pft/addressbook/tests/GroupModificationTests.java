@@ -45,7 +45,7 @@ public class GroupModificationTests extends TestBase {
         //after.sort(byId);
         //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object> (after)); // Variant 2 lists comparition
         //Assert.assertEquals(before, after);
-        assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
+        assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group))); /*proverjalka Hamcrest L.5.6 */
 
 
     }

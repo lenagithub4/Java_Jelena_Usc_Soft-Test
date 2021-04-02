@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -137,8 +138,8 @@ public class ContactHelper  extends HelperBase {
 
 
 
-    public Set<ContactData> all() {
-        Set<ContactData> contactsList = new HashSet<ContactData>();
+    public Contacts all() {
+        Contacts contactsList = new Contacts();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
         elements.remove(0);  // delete 1st row of table (header)
         for (WebElement element : elements) {

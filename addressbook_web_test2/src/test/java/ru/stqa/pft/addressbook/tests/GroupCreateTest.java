@@ -49,7 +49,7 @@ public class GroupCreateTest extends TestBase {
         //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object> (after)); // Variant 2 lists comparition
         //Assert.assertEquals(before, after); /*udalitj */
         assertThat(after, equalTo(
-                before.withAdded(group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt())))); /*proverjalka */
+                before.withAdded(group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt())))); /*proverjalka Hamcrest L.5.6 */
 
         //app.getGroupHelper().initGroup();
         //app.getGroupHelper().fillGroupForm(new GroupForm("test1", null, null));

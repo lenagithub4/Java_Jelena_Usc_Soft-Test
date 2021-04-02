@@ -16,7 +16,7 @@ public class ContactDeleteTest extends TestBase {
             if (app.group().all().size() == 0) {
                 app.group().create(new GroupForm().withName("test1"));
             }
-            app.contact().createContact(new ContactData("Name", "Name2", "Surname", "test1"), true);
+            app.contact().createContact(new ContactData().withName("Name").withMiddlename("Name2").withSurname("Surname").withGroup("test1"), true);
         }
     }
 

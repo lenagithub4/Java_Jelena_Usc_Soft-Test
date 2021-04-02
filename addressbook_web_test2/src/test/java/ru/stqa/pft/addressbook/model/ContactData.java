@@ -3,10 +3,10 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    private int id;
-    private final String name;
-    private final String middlename;
-    private final String surname;
+    private int id = Integer.MAX_VALUE;
+    private String name;
+    private String middlename;
+    private String surname;
     // private final String nick;
     // private final String company;
     // private final String city;
@@ -21,45 +21,8 @@ public class ContactData {
     // private final String notes;
     private String group;
 
+   // Constructors are deleted (L.5.4)
 
-    public ContactData( int id, String name, String middlename, String surname, String group) {
-        this.id = id;
-        this.name = name;
-        this.middlename = middlename;
-        this.surname = surname;
-       // this.nick = nick;
-       // this.company = company;
-      // this.city = city;
-       // this.phone = phone;
-      //  this.email = email;
-      //  this.bday = bday;
-      //  this.bmonth = bmonth;
-      //  this.byear = byear;
-      //  this.city2 = city2;
-      //  this.test1 = test1;
-      //  this.phone2 = phone2;
-      //  this.notes = notes;
-        this.group = group;
-    }
-    public ContactData( String name, String middlename, String surname, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.name = name;
-        this.middlename = middlename;
-        this.surname = surname;
-        // this.nick = nick;
-        // this.company = company;
-        // this.city = city;
-        // this.phone = phone;
-        //  this.email = email;
-        //  this.bday = bday;
-        //  this.bmonth = bmonth;
-        //  this.byear = byear;
-        //  this.city2 = city2;
-        //  this.test1 = test1;
-        //  this.phone2 = phone2;
-        //  this.notes = notes;
-        this.group = group;
-    }
     public String getName() {
         return name;
     }
@@ -148,9 +111,31 @@ public class ContactData {
 
     public int getId() {
         return id;
+
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public ContactData withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ContactData withMiddlename(String middlename) {
+        this.middlename = middlename;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
+    public ContactData withSurname(String surname) {
+        this.surname = surname;
+        return this;
     }
 }

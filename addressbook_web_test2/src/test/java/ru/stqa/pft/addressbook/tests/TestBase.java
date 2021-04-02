@@ -12,7 +12,8 @@ public class TestBase {
     protected static final  ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
     //@BeforeMethod(alwaysRun = true) //was before 5 Lection)
-    @BeforeSuite
+
+    @BeforeSuite  // 1 Browser window for all tests lekcija 5.1
     public void setUp() throws Exception {
         app.init();
     }

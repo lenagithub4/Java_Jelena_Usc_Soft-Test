@@ -10,19 +10,19 @@ import java.util.List;
 public class ContactCreationTests extends TestBase {
 
 
-  @Test(enabled=false)
+  @Test(enabled=true)
   public void testAddEntryToCatalog() throws Exception {
 
     app.goTo().GoToHome();
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().contactList();
     //int before = app.getContactHelper().getContactCount();
-    app.getContactHelper().AddNewContact();
+    app.contact().AddNewContact();
     ContactData entry = new ContactData("Olga", "Vladimirovna", "Uscelemova",   "test1");
-    app.getContactHelper().createContact(entry,true);
+    app.contact().createContact(entry,true);
    // app.getContactHelper().fillContactForm(new ContactData("Olga", "Vladimirovna", "Uscelemova",   "test1"), true);
     //app.getContactHelper().submitForm();
     app.goTo().GoToHome();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> after = app.contact().contactList();
    // int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after.size(), before.size() + 1);
 

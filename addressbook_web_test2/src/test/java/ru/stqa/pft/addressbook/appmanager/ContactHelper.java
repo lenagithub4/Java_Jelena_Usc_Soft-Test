@@ -79,6 +79,14 @@ public class ContactHelper  extends HelperBase {
         click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     }
 
+    public void delete(int index) {
+        GoToHome();
+        selectContact(index);
+        selectContactEdit(index);
+        deleteContact();
+        GoToHome();
+    }
+
     public void createContact(ContactData contacts, boolean b) {
      AddNewContact();
      fillContactForm(contacts, b);
@@ -114,7 +122,7 @@ public class ContactHelper  extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> contactList() {
         List<ContactData> contactsList = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr"));
             elements.remove(0);  // delete 1st row of table (header)

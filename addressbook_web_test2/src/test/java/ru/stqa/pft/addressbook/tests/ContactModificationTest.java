@@ -13,25 +13,25 @@ public class ContactModificationTest extends TestBase{
     public void ensurePreconditions() {
         app.goTo().GoToHome();
 
-        if (!app.getContactHelper().isThereAContact()) {
-            if (!app.group().isThereAGroup()) {
+        if (!app.contact().isThereAContact()) {
+            if (app.group().all().size() == 0) {
                 app.group().create(new GroupForm().withName("test1"));
             }
-            app.getContactHelper().createContact(new ContactData("Name", "Name2", "Surname", "test1"), true);
+            app.contact().createContact(new ContactData("Name", "Name2", "Surname", "test1"), true);
         }
     }
 
     @Test(enabled=true)
     public void testContactModification() {
         //app.goTo().GoToHome();
-        List<ContactData> before = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().contactList();
                   //int before = app.getContactHelper().getContactCount();
         int index = before.size() - 1;
         ContactData entry = new ContactData(before.get(index).getId(),"Olga2", "Vladimirovna_modif", "Bubina_modif", null);   //I have deleted the group approve b: true/false
         //app.getContactHelper().fillContactForm(new ContactData("Olga2", "Vladimirovna_modif", "Bubina_modif", null), false); app.goTo().GoToHome();
-        app.getContactHelper().modifyContract(index, entry);
+        app.contact().modifyContract(index, entry);
 
-        List<ContactData> after = app.getContactHelper().getContactList();
+        List<ContactData> after = app.contact().contactList();
        // int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after.size(), before.size());
 

@@ -33,10 +33,9 @@ public class GroupModificationTests extends TestBase {
                 .withId(modifiedGroup.getId()).withName("test1").withHeader("test2 modif").withFooter("test3 modif"); // Id formula
         app.group().modify(group);
         //int after = app.getGroupHelper().getGroupCount(); //check count of groups after modif
+        assertEquals(app.group().count(), (before.size()));// is count before and after is equals?
         Groups after = app.group().all();
-        assertEquals(after.size(), before.size());
-
-        //Lection 4.7. non-sorted collections
+         //Lection 4.7. non-sorted collections
         //before.remove(modifiedGroup);
         //before.add(group);
         //Lekcija 4.10

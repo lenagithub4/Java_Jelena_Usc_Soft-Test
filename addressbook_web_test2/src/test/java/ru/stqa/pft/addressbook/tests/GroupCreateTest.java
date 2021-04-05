@@ -18,45 +18,30 @@ public class GroupCreateTest extends TestBase {
 
         app.goTo().groupPage();
         Groups before = app.group().all();
-        //int before = app.getGroupHelper().getGroupCount(); //check count of groups before addition
         GroupForm group = new GroupForm().withName("test2");
         app.group().create(group);
         app.goTo().groupPage();
+        assertEquals(app.group().count(), (before.size() + 1));
         Groups after = app.group().all();
-        // int after = app.getGroupHelper().getGroupCount(); //check count of groups after addition
-        assertEquals(after.size(), (before.size() + 1));
-
-           /* old max function */
-        //int max = 0;
-        //for (GroupForm q : after) {
-        //    if (q.getId() > max) {
-        //        max = q.getId();
-         //   }
-        //}
-
-
-       // Comparator<? super GroupForm> byId = (Comparator<GroupForm>) (o1, o2) -> Integer.compare(o1.getId(), o2.getId()); //Lekcija 4.9
-
-        //int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
-       // group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId()); // Lekcija 4.8
-
-
-       //before.add(group);
-        /* lection 5.6 hide 3 lines below */
-      //  Comparator<? super GroupForm> byId = (q1, q2) -> Integer.compare(q1.getId(), q2.getId());
-      //  before.sort(byId);
-      //  after.sort(byId);
-        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object> (after)); // Variant 2 lists comparition
-        //Assert.assertEquals(before, after); /*udalitj */
-        assertThat(after, equalTo(
+                assertThat(after, equalTo(
                 before.withAdded(group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt())))); /*proverjalka Hamcrest L.5.6 */
 
-        //app.getGroupHelper().initGroup();
-        //app.getGroupHelper().fillGroupForm(new GroupForm("test1", null, null));
-        //app.getGroupHelper().submitGroupCreation();
-        //app.getNavigationHelper().gotoGroupPage();
-        //app.getGroupHelper().select();
-        //app.getGroupHelper().returnGroupPage();
+
+    }
+
+    @Test (enabled=true)
+    public void testBadGroupCreate() {
+
+        app.goTo().groupPage();
+        Groups before = app.group().all();
+        GroupForm group = new GroupForm().withName("test'");
+        app.group().create(group);
+        app.goTo().groupPage();
+        assertEquals(app.group().count(), (before.size()));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(before)); /*proverjalka Hamcrest L.5.6 */
+
+
     }
 
 

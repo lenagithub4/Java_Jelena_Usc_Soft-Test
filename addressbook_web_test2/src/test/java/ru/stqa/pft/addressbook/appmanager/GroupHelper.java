@@ -38,6 +38,12 @@ public class GroupHelper extends HelperBase{
     public void DeleteGroup() {
         click(By.name("delete"));
     }
+    public void delete(GroupForm group) {
+
+        selectGroupById(group.getId());
+        DeleteGroup();
+        groupCache = null;
+    }
 
    // public void selectGroup(int index) {
    //     wd.findElements(By.name("selected[]")).get(index).click();// not used
@@ -58,6 +64,7 @@ public class GroupHelper extends HelperBase{
         initGroup();
        fillGroupForm(group);
        submitGroupCreation();
+        groupCache = null;
        // gotoGroupPage();
        //select();
        //returnGroupPage();
@@ -68,6 +75,7 @@ public class GroupHelper extends HelperBase{
       initGroupModification();
       fillGroupForm(group);
       submitGroupModification();
+        groupCache = null;
       gotoGroupPage();
     }
     //public void delete(int index) {
@@ -105,23 +113,26 @@ public class GroupHelper extends HelperBase{
      //   return groups;
    // }
 
+    /* keshirovanie. L 5.7. */
+    private Groups groupCache = null;
+
     public Groups all() {
-        Groups groups = new Groups();
+        if (groupCache != null) {
+            return new Groups (groupCache);
+        }
+        groupCache = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements) {
             String name = element.getText();
             int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             //GroupForm group = new GroupForm().withId(id).withName(name); deleted and group in the line below is changed on...
-            groups.add(new GroupForm().withId(id).withName(name));
+            groupCache.add(new GroupForm().withId(id).withName(name));
         }
-        return groups;
+        return new Groups (groupCache);
     }
 
-    public void delete(GroupForm group) {
 
-        selectGroupById(group.getId());
-        DeleteGroup();
 
 
     }
-}
+

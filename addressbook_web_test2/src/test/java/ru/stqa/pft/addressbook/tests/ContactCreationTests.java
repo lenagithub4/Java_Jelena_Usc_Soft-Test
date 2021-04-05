@@ -23,7 +23,7 @@ public class ContactCreationTests extends TestBase {
     app.contact().createContact(entry,true);
    // app.getContactHelper().fillContactForm(new ContactData("Olga", "Vladimirovna", "Uscelemova",   "test1"), true);
     //app.getContactHelper().submitForm();
-    app.goTo().GoToHome();
+    //app.goTo().GoToHome();
     Contacts after = app.contact().all();
    // int after = app.getContactHelper().getContactCount();
     assertEquals(after.size(), before.size() + 1);
